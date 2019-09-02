@@ -1,0 +1,31 @@
+env:
+   global:
+     - CONAN_REFERENCE: "uasm/2.50"
+     - CONAN_USERNAME: "dbely"
+     - CONAN_LOGIN_USERNAME: "dbely"
+     - CONAN_CHANNEL: "testing"
+     - CONAN_UPLOAD: "https://api.bintray.com/conan/dbely/conan"
+     - CONAN_STABLE_BRANCH_PATTERN: "release/*"
+
+linux: &linux
+   os: linux
+   sudo: required
+   language: python
+   python: "3.6"
+   services:
+     - docker
+matrix:
+   include:
+
+      - <<: *linux
+        env: CONAN_DOCKER_IMAGE=conanio/gcc49-x86
+      - <<: *linux
+        env: CONAN_DOCKER_IMAGE=conanio/gcc49
+
+install:
+  - chmod +x .travis/install.sh
+  - ./.travis/install.sh
+
+script:
+  - chmod +x .travis/run.sh
+  - ./.travis/run.sh
