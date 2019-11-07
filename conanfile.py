@@ -11,8 +11,8 @@ class UasmConan(ConanFile):
     scm = {
         "type": "git",
         "subfolder": "uasm",
-        "url": "https://github.com/Terraspace/UASM",
-        "revision": "ca6642baa724c2439b74b118b776a8bfba602bde"
+        "url": "https://github.com/db4/UASM.git",
+        "revision": "b5265a75a1dffc18351f1868a5e5639ac17f53b7"
     }
 
     def build(self):
