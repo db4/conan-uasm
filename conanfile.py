@@ -8,11 +8,12 @@ class UasmConan(ConanFile):
     url = "http://github.com/db4/conan-uasm"
     license = "Sybase Open Watcom Public License"
     settings = "os_build", "compiler", "arch_build"
-
-    def source(self):
-        tools.get("https://github.com/Terraspace/UASM/archive/v%s.zip" % self.version,
-                  sha1="2c1868b383eec0389d41370bbb0f9d280edfc70c")
-        os.rename("%s-%s" % (self.name.upper(), self.version), "uasm")
+    scm = {
+        "type": "git",
+        "subfolder": "uasm",
+        "url": "https://github.com/Terraspace/UASM",
+        "revision": "ca6642baa724c2439b74b118b776a8bfba602bde"
+    }
 
     def build(self):
         with tools.chdir("uasm"):
